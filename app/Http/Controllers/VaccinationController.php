@@ -16,10 +16,17 @@ class VaccinationController extends Controller
 
     // CREATE
     public function store(Request $request)
-    {
-        $vaccination = Vaccination::create($request->all());
-        return response()->json($vaccination);
-    }
+{
+    $vaccination = Vaccination::create([
+        'name' => $request->name,
+        'age' => $request->age,
+        'vaccine_type' => $request->vaccine_type,
+        'vaccination_date' => $request->vaccination_date,
+        'dose_number' => $request->dose_number
+    ]);
+
+    return $vaccination;
+}
 
     // READ SINGLE
     public function show($id)
